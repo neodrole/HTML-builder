@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-const {stdout} = process;
+const { stdout } = process;
 
-const filePath = path.join(__dirname, "text.txt");
-const readableStream = fs.createReadStream(filePath, "utf-8");
+const filePath = path.join(__dirname, 'text.txt');
+const readableStream = fs.createReadStream(filePath, 'utf-8');
 
-readableStream.on("data", (chunk) => {
+readableStream.on('data', (chunk) => {
   stdout.write(chunk);
 });
