@@ -33,11 +33,14 @@ fs.readFile(path.join(__dirname, 'template.html'), 'utf-8', (err, data) => {
         template = template.replace(component, data);
         //console.log(component);
         //console.log(template);
-        fs.writeFile(indexPath, template, (err) => {
-          if (err) {
-            console.log(err);
-          }
-        });
+        let template_tags = template.match(/{{[a-z]*}}/g);
+        if (!Array.isArray(template_tags)) {
+          fs.writeFile(indexPath, template, (err) => {
+            if (err) {
+              console.log(err);
+            }
+          });
+        }
       },
     );
   });
